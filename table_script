@@ -1,0 +1,48 @@
+-- Table: public.tasks
+
+-- DROP TABLE IF EXISTS public.tasks;
+
+CREATE TABLE IF NOT EXISTS public.tasks
+(
+    task_id integer NOT NULL DEFAULT nextval('tasks_task_id_seq'::regclass),
+    task_name character varying(255) COLLATE pg_catalog."default" NOT NULL,
+    description text COLLATE pg_catalog."default",
+    status character varying(50) COLLATE pg_catalog."default" DEFAULT 'pending'::character varying,
+    user_id integer,
+    created_at timestamp without time zone DEFAULT CURRENT_TIMESTAMP,
+    modified_at timestamp without time zone DEFAULT CURRENT_TIMESTAMP,
+    created_by integer,
+    CONSTRAINT tasks_pkey PRIMARY KEY (task_id),
+    CONSTRAINT fk_user FOREIGN KEY (user_id)
+        REFERENCES public.users (user_id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE CASCADE
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.tasks
+    OWNER to postgres;
+
+
+
+
+-- Table: public.users
+
+-- DROP TABLE IF EXISTS public.users;
+
+CREATE TABLE IF NOT EXISTS public.users
+(
+    user_id integer NOT NULL DEFAULT nextval('users_user_id_seq'::regclass),
+    username character varying(100) COLLATE pg_catalog."default" NOT NULL,
+    emailid character varying(150) COLLATE pg_catalog."default" NOT NULL,
+    password text COLLATE pg_catalog."default" NOT NULL,
+    created_at timestamp without time zone DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT users_pkey PRIMARY KEY (user_id),
+    CONSTRAINT users_emailid_key UNIQUE (emailid)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.users
+    OWNER to postgres;

@@ -1,0 +1,220 @@
+{
+  "info": {
+    "_postman_id": "240daf7c-fe78-484f-bae8-bbe977275ea1",
+    "name": "weeng",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "31551530",
+    "_collection_link": "https://go.postman.co/collection/31551530-240daf7c-fe78-484f-bae8-bbe977275ea1?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "users",
+      "item": [
+        {
+          "name": "register user",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"username\" : \"pari36\" ,\n    \"emailid\" : \"paritoshpardeshi36@gmail.com\",\n    \"password\"  : \"pari1234\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:6004/api/v1/user/registerUser",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "6004",
+              "path": [
+                "api",
+                "v1",
+                "user",
+                "registerUser"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "login",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"emailid\" : \"paritoshpardeshi36@gmail.com\",\n    \"password\"  : \"pari1234\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:6004/api/v1/user/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "6004",
+              "path": [
+                "api",
+                "v1",
+                "user",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "tasks",
+      "item": [
+        {
+          "name": "get tasks",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbGlkIjoicGFyaXRvc2hwYXJkZXNoaTM2QGdtYWlsLmNvbSIsImlhdCI6MTc3MzgyMzExMiwiZXhwIjoxNzczOTA5NTEyfQ.a-0hQelyHNi-BdZXsg3gQN5IpLgeli83CsDDzKco84U",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{local}}/api/v1/task/tasks?page=1&limit=10",
+              "host": [
+                "{{local}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "task",
+                "tasks"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "10"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get task by id",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        },
+        {
+          "name": "create task",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbGlkIjoicGFyaXRvc2hwYXJkZXNoaTM2QGdtYWlsLmNvbSIsImlhdCI6MTc3MzgyMzExMiwiZXhwIjoxNzczOTA5NTEyfQ.a-0hQelyHNi-BdZXsg3gQN5IpLgeli83CsDDzKco84U",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"task_name\" :\"new task\",\r\n    \"description\" :\"simple task\",\r\n    \"status\" : \"pending\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{local}}/api/v1/task/tasks",
+              "host": [
+                "{{local}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "task",
+                "tasks"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "update task",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbGlkIjoicGFyaXRvc2hwYXJkZXNoaTM2QGdtYWlsLmNvbSIsImlhdCI6MTc3MzgyMzExMiwiZXhwIjoxNzczOTA5NTEyfQ.a-0hQelyHNi-BdZXsg3gQN5IpLgeli83CsDDzKco84U",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"task_name\" :\"new task updated\",\r\n    \"description\" :\"simple task\",\r\n    \"status\" : \"pending\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{local}}/api/v1/task/task/1",
+              "host": [
+                "{{local}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "task",
+                "task",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
